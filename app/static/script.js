@@ -18,23 +18,28 @@
  * <https://www.gnu.org/licenses/>.
  */
 
-// Dieses Skript ermöglicht es, dass die Checkbox in der Tabellen-
-// Kopfzeile alle Einträge der selben Spalte ebenfalls auswählt und
-// bei bei Abwahl eines Eintrages automatisch ebenfalls abgewählt
-// wird
+// This script allows the checkbox in the table header to select or deselect all
+// checkboxes in the same column. It also ensures that when a checkbox in a row
+// is deselected, the corresponding checkbox in the header is updated accordingly.
 
-document.querySelectorAll(`table input[type="checkbox"]`).forEach((checkbox) => {
+document.querySelectorAll('table input[type="checkbox"]').forEach((checkbox) => {
   checkbox.addEventListener("input", () => {
+    // Find the column where the checkbox is located
     const column = checkbox.closest("td, th");
+    // Determine the index of the column (1-based)
     const nth = Array.from(column.parentElement.children).indexOf(column) + 1;
+    // Find the closest ancestor that is either a thead, tbody, or tfoot
     const closest = checkbox.closest("thead, tbody, tfoot");
-    if (closest.nodeName.toLowerCase() != "tbody") {
+    
+    if (closest.nodeName.toLowerCase() !== "tbody") {
+      // If the checkbox is in the header or footer, update all checkboxes in that column
       closest.parentElement
         .querySelectorAll(`td:nth-child(${nth}) input[type="checkbox"], th:nth-child(${nth}) input[type="checkbox"]`)
         .forEach((_checkbox) => {
           _checkbox.checked = checkbox.checked;
         });
     } else {
+      // If the checkbox is in the body of the table, uncheck all checkboxes in the corresponding column
       closest.parentElement
         .querySelectorAll(`thead *:nth-child(${nth}) input[type=checkbox], tfoot *:nth-child(${nth}) input[type=checkbox]`)
         .forEach((checkbox) => (checkbox.checked = false));
