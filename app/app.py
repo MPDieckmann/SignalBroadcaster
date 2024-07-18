@@ -42,9 +42,6 @@ import requests
 import logging
 from datetime import datetime
 
-APP_VERSION = "2024-07-24"
-APP_DEVELOPERS = ["MPDieckmann"]
-
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -54,8 +51,8 @@ app = Flask(__name__)
 app.secret_key = os.getenv("APP_SECRET_KEY", "Signal's Secret Key")
 app.config.update(
     APP_NAME=os.getenv("APP_NAME", "Signal Broadcaster"),
-    APP_VERSION=APP_VERSION,
-    APP_DEVELOPERS=APP_DEVELOPERS,
+    APP_VERSION=os.getenv("APP_VERSION"),
+    APP_DEVELOPERS=["MPDieckmann"],
     SESSION_COOKIE_HTTPONLY=True,
     SESSION_COOKIE_SAMESITE="Lax",
     BABEL_DEFAULT_LOCALE="en",

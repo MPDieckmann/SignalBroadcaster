@@ -16,6 +16,7 @@ services:
     build: app
     restart: always
     environment:
+      - APP_VERSION=2024-07-19
       - APP_SECRET_KEY=${APP_SECRET_KEY:-Signal's Secret Key}
       - APP_NAME=${APP_NAME:-Signal Manager}
     volumes:
