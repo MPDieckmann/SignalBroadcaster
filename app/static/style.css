@@ -36,7 +36,7 @@ body {
     "aside-primary main"
     "footer footer";
   grid-template-rows: auto 1fr auto;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 20rem 1fr;
 }
 
 #header {
@@ -45,8 +45,10 @@ body {
   color: #fff;
   display: flex;
   flex-flow: row nowrap;
+  gap: 0.4rem;
   grid-area: header;
   align-items: center;
+  padding: 0 0.4rem 0 20.4rem;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -55,29 +57,28 @@ body {
 #header h1 {
   flex: 1 1 auto;
   font-size: 1.25rem;
-  margin: 0 0.8rem;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 0;
 }
 
-.menu-button,
-#login-link,
-#logout-link {
+#header .button {
+  border: none;
   border-radius: 0.4rem;
   color: #fff;
   font-size: 0.8rem;
   font-weight: bold;
-  margin: 0.4rem;
+  margin: 0.4rem 0;
   padding: 0.4rem;
   text-decoration: none;
   text-transform: uppercase;
   transition: background 0.3s;
 }
 
-.menu-button:hover,
-.menu-button:focus,
-#login-link:hover,
-#logout-link:hover,
-#login-link:focus,
-#logout-link:focus {
+#header .button:hover,
+#header .button:focus {
   background: #0004;
 }
 
@@ -90,6 +91,9 @@ body {
 #aside-primary {
   grid-area: aside-primary;
   padding: 0.8rem;
+  position: sticky;
+  top: 2.7rem;
+  height: fit-content;
 }
 
 #aside-primary a {
@@ -312,17 +316,29 @@ code {
   --message-color: var(--color-success);
 }
 
-#aside-primary .menu-button {
+#header .menu-button {
+  font-size: 1rem;
+  height: 2rem;
+  line-height: 2rem;
   margin: 0;
-  padding: 0.25rem;
+  padding: 0;
+  text-align: center;
+  width: 2rem;
 }
 
-.menu-button {
-  font-size: 1rem;
-  height: 1rem;
-  line-height: 1rem;
-  width: 1rem;
+#aside-primary .menu-button {
+  font-size: 1.5rem;
+  height: 1.75rem;
+  line-height: 1.7rem;
+  margin: -0.25rem 0.25rem 0.25rem -0.25rem;
+  padding: 0;
   text-align: center;
+  width: 1.75rem;
+}
+
+#aside-primary .menu-button:hover {
+  color: #fff;
+  text-decoration: none;
 }
 
 @keyframes fadeOut {
@@ -348,6 +364,10 @@ code {
     grid-template-columns: 1fr;
   }
 
+  #header {
+    padding: 0 0.4rem;
+  }
+
   #qrcode {
     display: block;
     margin: auto;
@@ -364,6 +384,7 @@ code {
     transition: left 0.3s, box-shadow 0.3s;
     width: 90%;
     height: 100%;
+    z-index: 1;
   }
 
   #aside-primary:target {

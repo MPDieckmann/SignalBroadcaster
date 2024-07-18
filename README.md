@@ -54,11 +54,13 @@ Signal Broadcaster is a web application that integrates with Signal to facilitat
 
 ## Dependencies
 
-- **Flask**: [BSD 3-Clause License](https://github.com/pallets/flask/blob/main/LICENSE.txt)
-- **Flask-WTF**: [BSD 3-Clause License](https://github.com/wtforms/flask-wtf/blob/main/LICENSE.rst)
-- **Requests**: [Apache License 2.0](https://github.com/psf/requests/blob/main/LICENSE)
-- **uWSGI**: [GPL-2.0 License + Linking Exception](https://github.com/unbit/uwsgi/blob/master/LICENSE)
-- **PyYAML**: [MIT License](https://github.com/yaml/pyyaml/blob/master/LICENSE)
+- **[Python](https://python.org)**: [PSF License](https://docs.python.org/3/license.html)
+- **[uWSGI](https://github.com/unbit/uwsgi)**: [GPL-2.0 License + Linking Exception](https://github.com/unbit/uwsgi/blob/master/LICENSE)
+- **[Flask](https://github.com/pallets/flask)**: [BSD 3-Clause License](https://github.com/pallets/flask/blob/main/LICENSE.txt)
+- **[Flask-Babel](https://github.com/python-babel/flask-babel)**: [BSD 3-Clause License](https://github.com/python-babel/flask-babel/blob/master/LICENSE)
+- **[Flask-WTF](https://github.com/wtforms/flask-wtf)**: [BSD 3-Clause License](https://github.com/wtforms/flask-wtf/blob/main/LICENSE.rst)
+- **[Requests](https://github.com/psf/requests)**: [Apache License 2.0](https://github.com/psf/requests/blob/main/LICENSE)
+- **[PyYAML](https://github.com/yaml/pyyaml)**: [MIT License](https://github.com/yaml/pyyaml/blob/master/LICENSE)
 
 ## License
 

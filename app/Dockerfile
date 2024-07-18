@@ -29,9 +29,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 USER 1000:1000
 
-COPY app.py /app/
-COPY static /app/static
-COPY templates /app/templates
+COPY --chown=1000:1000 app.py /app/
+COPY --chown=1000:1000 translations /app/translations
+COPY --chown=1000:1000 static /app/static
+COPY --chown=1000:1000 templates /app/templates
+
+RUN pybabel compile -d translations
 
 ENV APP_SECRET_KEY="Signal's Secret Key"
 ENV APP_NAME = "Signal Broadcaster"

@@ -1,5 +1,5 @@
 <table>
-  <caption>Gruppen</caption>
+  <caption>{{ _("Groups") }}</caption>
   <thead>
     <tr>
       <th><input id="groups" type="checkbox" /></th>
@@ -16,7 +16,7 @@
       <td>{% for member in group.members %}{{ member.name }}{% if not loop.last %}, {% endif %}{% endfor %}</td>
       <td>
         <details>
-          <summary>mehr</summary>
+          <summary>{{ _("more") }}</summary>
           {% for prop in group.keys() %}
           {% if prop != "name" and prop != "members" %}
           <div class="prop"><b>{{ prop }}:</b> {{ group[prop] }}</div>

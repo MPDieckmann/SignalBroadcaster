@@ -1,0 +1,196 @@
+# Translations template for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-07-19 00:38+0200\n"
+"PO-Revision-Date: 2024-07-19 00:50+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: app.py:216
+msgid "Please log in first."
+msgstr "Bitte melde Dich zunächst an."
+
+#: app.py:240
+msgid "Please link your device first."
+msgstr "Bitte verknüpfe Dein Endgerät zunächst."
+
+#: app.py:256 templates/base.jinja:27
+msgid "Home"
+msgstr "Startseite"
+
+#: app.py:296 templates/base.jinja:29
+msgid "Help"
+msgstr "Hilfe"
+
+#: app.py:307 templates/base.jinja:30
+msgid "About the Project"
+msgstr "Über das Projekt"
+
+#: app.py:387
+msgid "Messages sent successfully!"
+msgstr "Nachrichten erfolgreich versandt!"
+
+#: app.py:459
+msgid "Successfully logged in!"
+msgstr "Erfolgreich eingeloggt!"
+
+#: app.py:465
+msgid "Incorrect username or password!"
+msgstr "Benutzername oder Passwort stimmen nicht!"
+
+#: app.py:466 templates/base.jinja:20 templates/login.jinja:11
+msgid "Login"
+msgstr "Anmelden"
+
+#: app.py:481
+msgid "Link Device"
+msgstr "Gerät verknüpfen"
+
+#: app.py:504
+msgid "Device successfully unlinked."
+msgstr "Endgerät erfolgreich entkoppelt."
+
+#: app.py:509 templates/base.jinja:28 templates/unlink.jinja:9
+msgid "Unlink Device"
+msgstr "Gerät entkoppeln"
+
+#: app.py:532
+msgid "QR Code could not be generated!"
+msgstr "QR Code konnte nicht erstellt werden!"
+
+#: app.py:545
+msgid "Successfully logged out!"
+msgstr "Erfolgreich ausgeloggt!"
+
+#: templates/about.jinja:4
+msgid "All rights reserved."
+msgstr "Alle Rechte vorbehalten."
+
+#: templates/about.jinja:5
+msgid "This project uses the following third-party libraries:"
+msgstr "Dieses Projekt nutzt die folgenden Dritt-Anbieter Bibliotheken:"
+
+#: templates/about.jinja:36
+msgid "This software is licensed under the GPL-3.0 License:"
+msgstr "Diese Software ist lizensiert unter der GPL-3.0 Lizenz:"
+
+#: templates/base.jinja:19
+msgid "Logout"
+msgstr "Abmelden"
+
+#: templates/contacts.jinja:2
+msgid "Contacts"
+msgstr "Kontakte"
+
+#: templates/contacts.jinja:21 templates/groups.jinja:19
+msgid "more"
+msgstr "mehr"
+
+#: templates/groups.jinja:2
+msgid "Groups"
+msgstr "Gruppen"
+
+#: templates/help.jinja:4
+msgid "How can messages be personalized?"
+msgstr "Wie können Nachrichten personalisiert werden?"
+
+#: templates/help.jinja:22
+msgid "All entries from this file can be easily used:"
+msgstr ""
+"Alle Einträge aus dieser Datei können auf die folgenden Art und Weise "
+"einfach benutzt werden:"
+
+#: templates/help.jinja:34
+msgid ""
+"These entries were all saved under the contact. When a message is sent to a "
+"group, group variables become accessible as well:"
+msgstr ""
+"Alle Eigenschaften sind unter contact verfügbar. Wenn eine Nachricht an "
+"eine Gruppe gesendet wird, so ist außerdem die Variable group verfügbar:"
+
+#: templates/index.jinja:5
+#, python-format
+msgid "Hello %(name)s"
+msgstr "Hallo %(name)s"
+
+#: templates/index.jinja:13
+msgid "Sender:"
+msgstr "Absender:"
+
+#: templates/index.jinja:15
+msgid "Message (de):"
+msgstr "Nachricht (de):"
+
+#: templates/index.jinja:17
+msgid "Message (en):"
+msgstr "Nachricht (en):"
+
+#: templates/index.jinja:24
+msgid "Send"
+msgstr "Senden"
+
+#: templates/index.jinja:25
+msgid "Reset Fields"
+msgstr "Felder leeren"
+
+#: templates/link.jinja:4
+msgid "Scan QR Code"
+msgstr "QR Code scannen"
+
+#: templates/link.jinja:5
+msgid "Please scan the QR code with your Signal app to connect your device."
+msgstr ""
+"Bitte scanne den QR Code mit Deiner Signal App und verknüpfe Dein Endgerät."
+
+#: templates/link.jinja:6
+msgid "Afterward, please refresh the page or click on Continue:"
+msgstr "Bitte lade danach die Seite neu oder klicke auf 'Weiter':"
+
+#: templates/link.jinja:6
+msgid "Continue"
+msgstr "Weiter"
+
+#: templates/login.jinja:6
+msgid "Username:"
+msgstr "Benutzername:"
+
+#: templates/login.jinja:8 templates/login.jinja:9
+msgid "Password:"
+msgstr "Passwort:"
+
+#: templates/unlink.jinja:6
+msgid ""
+"If you unlink your device, you will no longer be able to send messages via "
+"this application."
+msgstr ""
+"Wenn Du die Verknüpfung zu Deinem Endgerät aufhebst, wirst Du nicht länger "
+"in der Lage sein, Nachrichten über diese Anwendung zu verschicken."
+
+#: templates/unlink.jinja:7
+msgid "You can still send and receive messages via your Signal app."
+msgstr ""
+"Du kannst weiterhin Nachrichten über die Signal App senden und empfangen."
+
+#: templates/unlink.jinja:8
+msgid "You will be automatically logged out after unlinking your device."
+msgstr "Du wirst automatisch ausgeloggt, nachdem Dein Gerät entkoppelt wurde."
+
+#: templates/unlink.jinja:10
+msgid ""
+"If you want to continue sending messages via this application, please log "
+"out."
+msgstr ""
+"Wenn Du weiterhin Nachrichten mit dieser Anwendung verschicken können "
+"möchtest, melde Dich bitte ab."

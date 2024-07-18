@@ -1,7 +1,7 @@
 {% extends "base.jinja" %}
 
 {% block main %}
-<img id="qrcode" src="/link/qrcode.png" alt="QR Code" />
-<p>Bitte scanne den QR Code mit Deiner Signal App und Dein Gerät zu verbinden.</p>
-<p>Danach lade bitte die Seite neu oder klicke auf <a class="button" href="/">Weiter</a></p>
+<img id="qrcode" src="/link/qrcode.png" title="{{ _("Scan QR Code") }}" alt="{{ _("Scan QR Code") }}" />
+<p>{{ _("Please scan the QR code with your Signal app to connect your device.") }}</p>
+<p>{{ _("Afterward, please refresh the page or click on Continue:") }} <a class="button" href="/">{{ _("Continue") }}</a></p>
 {% endblock main %}

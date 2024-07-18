@@ -3,12 +3,12 @@
 {% block main %}
 <form action="/login" method="post">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-  <label for="username">Benutzername:</label>
-  <input id="username" name="username" type="text" placeholder="Max Musterfrau..." />
-  <label for="password">Passwort:</label>
-  <input id="password" name="password" type="password" placeholder="Passwort..." />
+  <label for="username">{{ _("Username:") }}</label>
+  <input id="username" name="username" type="text" placeholder="Max..." />
+  <label for="password">{{ _("Password:") }}</label>
+  <input id="password" name="password" type="password" placeholder="{{ _("Password:") }}..." />
   <div class="button-group">
-    <button class="button-success" type="submit">Login</button>
+    <button class="button-success" type="submit">{{ _("Login") }}</button>
   </div>
 </form>
 {% endblock main %}

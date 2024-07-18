@@ -1,5 +1,5 @@
 <table>
-  <caption>Kontakte</caption>
+  <caption>{{ _("Contacts") }}</caption>
   <thead>
     <tr>
       <th><input id="contacts[]" type="checkbox" /></th>
@@ -18,7 +18,7 @@
       <td>{{ contact.phone }}</td>
       <td>
         <details>
-          <summary>mehr</summary>
+          <summary>{{ _("more") }}</summary>
           {% for prop in contact.keys() %}
           {% if prop != "name" and prop != "lang" and prop != "phone" %}
           <div class="prop"><b>{{ prop }}:</b> {{ contact[prop] }}</div>

@@ -32,6 +32,7 @@ from flask import (
     send_file,
 )
 from flask_wtf import CSRFProtect
+from flask_babel import Babel, _
 import os
 from io import BytesIO
 import yaml
@@ -51,17 +52,15 @@ logger = logging.getLogger(__name__)
 # Initialize the Flask application
 app = Flask(__name__)
 app.secret_key = os.getenv("APP_SECRET_KEY", "Signal's Secret Key")
-app.config["APP_NAME"] = os.getenv("APP_NAME", "Signal Broadcaster")
-app.config["APP_VERSION"] = APP_VERSION
-app.config["APP_DEVELOPERS"] = APP_DEVELOPERS
-csrf = CSRFProtect(app)  # CSRF protection
-app.debug = True
-
-# Configure session cookies
 app.config.update(
+    APP_NAME=os.getenv("APP_NAME", "Signal Broadcaster"),
+    APP_VERSION=APP_VERSION,
+    APP_DEVELOPERS=APP_DEVELOPERS,
     SESSION_COOKIE_HTTPONLY=True,
     SESSION_COOKIE_SAMESITE="Lax",
+    BABEL_DEFAULT_LOCALE="en",
 )
+csrf = CSRFProtect(app)
 
 # Load user and contact information from YAML files
 with open("config/users.yaml", "r") as file:
@@ -81,6 +80,16 @@ with open("config/contacts.yaml", "r") as file:
 
 # Initialize a session for HTTP requests
 session_requests = requests.Session()
+
+
+def get_locale():
+    if "lang" in session:
+        return session["lang"]
+
+    return request.accept_languages.best_match(["en", "de"])
+
+
+babel = Babel(app, locale_selector=get_locale)
 
 
 @app.context_processor
@@ -207,7 +216,7 @@ def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if "logged_in" not in session:
-            flash("Please log in first.", "error")
+            flash(_("Please log in first."), "error")
             return redirect(url_for("login"))
         return f(*args, **kwargs)
 
@@ -231,7 +240,7 @@ def link_required(f):
             if session["phone"] in get_accounts():
                 session["device_linked"] = True
                 return f(*args, **kwargs)
-            flash("Please link your device first.", "error")
+            flash(_("Please link your device first."), "error")
             return redirect(url_for("link"))
         return f(*args, **kwargs)
 
@@ -248,7 +257,9 @@ def index():
     Returns:
         str: The rendered HTML of the homepage template.
     """
-    return render_template("index.jinja", title="Homepage")
+    return render_template(
+        "index.jinja", title=(_("Hello %(name)s") % {"name": session.get("name")})
+    )
 
 
 @app.route("/healthcheck")
@@ -262,6 +273,22 @@ def healthcheck():
     return "", 204
 
 
+@app.route("/switch_lang")
+def switch_lang():
+    """
+    Switches the language for the session based on the form input.
+
+    Returns:
+        redirect: Redirects back to the referrer page or home page.
+    """
+    lang = request.form.get("lang")
+
+    if lang:
+        session["lang"] = lang
+
+    return redirect(request.referrer or url_for("index"))
+
+
 @app.route("/help")
 @login_required
 @link_required
@@ -272,20 +299,18 @@ def help():
     Returns:
         str: The rendered HTML of the help template.
     """
-    return render_template("help.jinja", title="Help")
+    return render_template("help.jinja", title=_("Help"))
 
 
 @app.route("/about")
-@login_required
-@link_required
-def help():
+def about():
     """
     Renders the about page.
 
     Returns:
         str: The rendered HTML of the about template.
     """
-    return render_template("about.jinja", title="About")
+    return render_template("about.jinja", title=_("About the Project"))
 
 
 @app.route("/info")
@@ -365,7 +390,7 @@ def send():
                 )
                 break
 
-    flash("Messages sent successfully!", "info")
+    flash(_("Messages sent successfully!"), "info")
     flash(json.dumps(messages), "success")
 
     return redirect(url_for("index"))
@@ -437,14 +462,14 @@ def login():
             session["name"] = user.get("name", "")
             session["phone"] = user.get("phone", "")
             session["lang"] = user.get("lang", "")
-            flash("Successfully logged in!", "success")
+            flash(_("Successfully logged in!"), "success")
             for account in get_accounts():
                 if account == session["phone"]:
                     return redirect(url_for("index"))
             return redirect(url_for("link"))
         else:
-            flash("Incorrect username or password!", "danger")
-    return render_template("login.jinja", title="Login")
+            flash(_("Incorrect username or password!"), "danger")
+    return render_template("login.jinja", title=_("Login"))
 
 
 @app.route("/link", methods=["GET"])
@@ -459,7 +484,7 @@ def link():
     if session["phone"] in get_accounts():
         session["device_linked"] = True
         return redirect(url_for("index"))
-    return render_template("link.jinja", title="Link Device")
+    return render_template("link.jinja", title=_("Link Device"))
 
 
 @app.route("/unlink", methods=["GET", "POST"])
@@ -482,12 +507,12 @@ def unlink():
                 json={"delete_local_data": True},
             )
             response.raise_for_status()
-            flash("Device connection removed", "success")
+            flash(_("Device successfully unlinked."), "success")
         except requests.RequestException as e:
             logger.error("Failed to unregister device: %s", e)
             flash(response.text if response else str(e), "danger")
         return logout()
-    return render_template("unlink.jinja", title="Unlink Device")
+    return render_template("unlink.jinja", title=_("Unlink Device"))
 
 
 @app.route("/link/qrcode.png")
@@ -510,7 +535,7 @@ def qrcode_png():
         )
     except requests.RequestException as e:
         logger.error("Failed to get QR code: %s", e)
-        flash("QR Code could not be generated!", "error")
+        flash(_("QR Code could not be generated!"), "error")
         return redirect(url_for("link"))
 
 
@@ -523,7 +548,7 @@ def logout():
         str: A redirect to the login page with a flash message indicating successful logout.
     """
     session.clear()
-    flash("Successfully logged out!", "success")
+    flash(_("Successfully logged out!"), "success")
     return redirect(url_for("login"))
 
 

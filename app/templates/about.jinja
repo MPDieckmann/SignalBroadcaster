@@ -1,18 +1,37 @@
 {% extends "base.jinja" %}
 
 {% block main %}
-<!-- Footer or About Page -->
-<div class="attribution">
-  <p>&copy; {{ now.year }} {{ app.developers | join(", ") }}. All rights reserved.</p>
-  <p>This project uses the following third-party libraries:</p>
-  <ul>
-    <li>Python - <a href="https://docs.python.org/3/license.html">PSF License</a></li>
-    <li>uWSGI - <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GPL-2.0</a></li>
-    <li>Flask - <a href="https://opensource.org/licenses/BSD-3-Clause">BSD License</a></li>
-    <li>Flask-WTF - <a href="https://opensource.org/licenses/BSD-3-Clause">BSD License</a></li>
-    <li>Requests - <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></li>
-    <li>PyYAML - <a href="https://opensource.org/licenses/MIT">MIT License</a></li>
-  </ul>
-  <p>This software is licensed under the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0 License</a>.</p>
-</div>
+<p>&copy; {{ now.year }} {{ app.developers | join(", ") }}. {{ _("All rights reserved.") }}</p>
+<p>{{ _("This project uses the following third-party libraries:") }}</p>
+<ul>
+  <li>
+    <b><a href="https://python.org/">Python</a></b>:
+    <a href="https://docs.python.org/3/license.html">PSF License</a>
+  </li>
+  <li>
+    <b><a href="https://github.com/unbit/uwsgi">uWSGI</a></b>:
+    <a href="https://github.com/unbit/uwsgi/blob/master/LICENSE">GPL-2.0 License + Linking Exception</a>
+  </li>
+  <li>
+    <b><a href="https://github.com/pallets/flask">Flask</a></b>:
+    <a href="https://github.com/pallets/flask/blob/main/LICENSE.txt">BSD 3-Clause License</a>
+  </li>
+  <li>
+    <b><a href="https://github.com/python-babel/flask-babel">Flask-Babel</a></b>:
+    <a href="https://github.com/python-babel/flask-babel/blob/master/LICENSE">BSD 3-Clause License</a>
+  </li>
+  <li>
+    <b><a href="https://github.com/wtforms/flask-wtf">Flask-WTF</a></b>:
+    <a href="https://github.com/wtforms/flask-wtf/blob/main/LICENSE.rst">BSD 3-Clause License</a>
+  </li>
+  <li>
+    <b><a href="https://github.com/psf/requests">Requests</a></b>:
+    <a href="https://github.com/psf/requests/blob/main/LICENSE">Apache License 2.0</a>
+  </li>
+  <li>
+    <b><a href="https://github.com/yaml/pyyaml">PyYAML</a></b>:
+    <a href="https://github.com/yaml/pyyaml/blob/master/LICENSE">MIT License</a>
+  </li>
+</ul>
+<p>{{ _("This software is licensed under the GPL-3.0 License:") }} <a href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0 License</a></p>
 {% endblock main %}

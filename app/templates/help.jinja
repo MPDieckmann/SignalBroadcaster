@@ -1,14 +1,14 @@
 {% extends "base.jinja" %}
 
 {% block main %}
-<p><b>Wie können Nachrichten personalisiert werden?</b></p>
-<p>Die Nachrichten werden über die Template-Engine <a href="https://jinja.palletsprojects.com/en/3.1.x/templates/">Jinja
-    2</a> gerendert.</p>
-<p>Im Folgenden werden wir diese Beispielkonfiguration für die <code>contacts.yaml</code> verwenden:</p>
+<p><b>{{ _("How can messages be personalized?") }}</b></p>
+<p>The messages are rendered using the template engine Jinja 2.
+  (<a href="https://jinja.palletsprojects.com/en/3.1.x/templates/">Jinja 2</a>)</p>
+<p>The following example configuration will be used for contacts.yaml:</p>
 <pre>
 <b>contacts:</b>
 <b>- name:</b> Max
-  <b>phone:</b> "+49123456789"
+  <b>phone:</b> "+4912345678901"
   <b>lang:</b> de
   <b>zitat:</b> Ich mag meine Templates roh.
 
@@ -19,19 +19,19 @@
   <b>zitat:</b> Wir haben keine Zitate.
 </pre>
 
-<p>Alle Einträge aus dieser Datei lassen sich einfach benutzen:</p>
+<p>{{ _("All entries from this file can be easily used:") }}</p>
 <ul>
   <li><code>Hallo <b>{{ "{{" }} contact.name {{ "}}" }}</b>!</code> wird zu <code>Hallo Max!</code></li>
   <li><code>Deine Handynummer ist: <b>{{ "{{" }} contact.phone {{ "}}" }}</b>.</code> wird zu
-    <code>Deine Handynummer ist: +49123456789.</code>
+    <code>Deine Handynummer ist: +4912345678901.</code>
   </li>
   <li><code>Du sprichst gerne <b>{{ "{{" }} contact.lang {{ "}}" }}</b>!</code> wird zu
-    <code>Du sprichst gerne de!</code></li>
+    <code>Du sprichst gerne de!</code>
+  </li>
   <li><code><b>{{ "{{" }} contact.zitat {{ "}}" }}</b></code> wird zu <code>Ich mag meine Templates roh.</code></li>
 </ul>
 
-<p>Diese Einträge waren alle unter dem Kontakt gespeichert. Wenn nun an eine Gruppe eine Nachricht geschrieben wird,
-  werden zusätzlich noch die Gruppenvariablen zugänglich:</p>
+<p>{{ _("These entries were all saved under the contact. When a message is sent to a group, group variables become accessible as well:") }}</p>
 <ul>
   <li><code>Du bist in der Gruppe <b>{{ "{{" }} group.name {{ "}}" }}</b>!</code> wird zu
     <code>Du bist in der Gruppe Familie!</code>

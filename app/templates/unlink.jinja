@@ -3,11 +3,10 @@
 {% block main %}
 <form action="/unlink" method="post">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-  <p>Wenn Du die Verbindung zu Deinem Gerät löschst, wirst Du nicht mehr in der Lage sein über diese Anwendung
-    Nachrichten zu verschicken.</p>
-  <p>Weiterhin kannst Du über Deine Signal-App Nachrichten senden und empfangen.</p>
-  <p>Nachdem Du die Verbindung zu Deinem Gerät gelöscht hast, wirst Du automatisch abgemeldet.</p>
-  <button name="unlink-device" value="true" type="submit" class="button-danger">Verbindng zum Gerät löschen</button>
-  <p>Wenn Du weiterhin Nachrichten über diese Anwendung verschicken können möchtest, melde Dich einfach ab.</p>
+  <p>{{ _("If you unlink your device, you will no longer be able to send messages via this application.") }}</p>
+  <p>{{ _("You can still send and receive messages via your Signal app.") }}</p>
+  <p>{{ _("You will be automatically logged out after unlinking your device.") }}</p>
+  <button name="unlink-device" value="true" type="submit" class="button-danger">{{ _("Unlink Device") }}</button>
+  <p>{{ _("If you want to continue sending messages via this application, please log out.") }}</p>
 </form>
 {% endblock main %}

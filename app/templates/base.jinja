@@ -10,20 +10,24 @@
 
 <body>
   <header id="header">
-    <a href="#aside-primary" class="menu-button hide-on-desktop">&#x2630;</a>
+    <a href="#aside-primary" class="menu-button button hide-on-desktop">&#x2630;</a>
     {% block header %}
     <h1>{{ title }}</h1>
-    {% if session.logged_in %}<a id="logout-link" href="/logout">Abmelden</a>{% else %}<a id="login-link"
-      href="/login">Anmelden</a>{% endif %}
+    {% with locale="de" %}{% if session.lang == "de" %}{% set locale = "en" %}{% endif %}
+    <a class="button" href="/switch_lang?lang={{ locale }}">{{ locale }}</a>
+    {% endwith %}
+    {% if session.logged_in %}<a class="button" href="/logout">{{ _("Logout") }}</a>{% else %}<a class="button"
+      href="/login">{{ _("Login") }}</a>{% endif %}
     {% endblock header %}
   </header>
   <main id="main">{% block main %}{% endblock main %}</main>
   <aside id="aside-primary">
-    <a href="#main" class="button menu-button hide-on-desktop">&times;</a>
+    <a href="#main" class="menu-button button hide-on-desktop">&times;</a>
     <ul>
-      <li><a href="/">Startseite</a></li>
-      {% if session.device_linked %}<li><a href="/unlink">Geräteverbindung löschen</a></li>{% endif %}
-      <li><a href="/help">Hilfe</a></li>
+      <li><a href="/">{{ _("Home") }}</a></li>
+      {% if session.device_linked %}<li><a href="/unlink">{{ _("Unlink Device") }}</a></li>{% endif %}
+      <li><a href="/help">{{ _("Help") }}</a></li>
+      <li><a href="/about">{{ _("About the Project") }}</a></li>
     </ul>
   </aside>
   <footer id="footer">&copy; {{ now.year }} {{ app.developers | join(", ") }}.</footer>

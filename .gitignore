@@ -1,3 +1,4 @@
 .env
 contacts.yaml
 users.yaml
+*.mo
