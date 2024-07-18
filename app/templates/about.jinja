@@ -1,0 +1,18 @@
+{% extends "base.jinja" %}
+
+{% block main %}
+<!-- Footer or About Page -->
+<div class="attribution">
+  <p>&copy; {{ now.year }} {{ app.developers | join(", ") }}. All rights reserved.</p>
+  <p>This project uses the following third-party libraries:</p>
+  <ul>
+    <li>Python - <a href="https://docs.python.org/3/license.html">PSF License</a></li>
+    <li>uWSGI - <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GPL-2.0</a></li>
+    <li>Flask - <a href="https://opensource.org/licenses/BSD-3-Clause">BSD License</a></li>
+    <li>Flask-WTF - <a href="https://opensource.org/licenses/BSD-3-Clause">BSD License</a></li>
+    <li>Requests - <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></li>
+    <li>PyYAML - <a href="https://opensource.org/licenses/MIT">MIT License</a></li>
+  </ul>
+  <p>This software is licensed under the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0 License</a>.</p>
+</div>
+{% endblock main %}

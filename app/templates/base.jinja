@@ -1,0 +1,39 @@
+{% autoescape true %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{{ title }} | {{ app.APP_NAME }}</title>
+  <link href="/static/style.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+</head>
+
+<body>
+  <header id="header">
+    <a href="#aside-primary" class="menu-button hide-on-desktop">&#x2630;</a>
+    {% block header %}
+    <h1>{{ title }}</h1>
+    {% if session.logged_in %}<a id="logout-link" href="/logout">Abmelden</a>{% else %}<a id="login-link"
+      href="/login">Anmelden</a>{% endif %}
+    {% endblock header %}
+  </header>
+  <main id="main">{% block main %}{% endblock main %}</main>
+  <aside id="aside-primary">
+    <a href="#main" class="button menu-button hide-on-desktop">&times;</a>
+    <ul>
+      <li><a href="/">Startseite</a></li>
+      {% if session.device_linked %}<li><a href="/unlink">Geräteverbindung löschen</a></li>{% endif %}
+      <li><a href="/help">Hilfe</a></li>
+    </ul>
+  </aside>
+  <footer id="footer">&copy; {{ now.year }} {{ app.developers | join(", ") }}.</footer>
+  <div id="messages">
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+    <div class="message message-{{ category }}">{{ message }}</div>
+    {% endfor %}
+  </div>
+  <script src="/static/script.js"></script>
+</body>
+
+</html>
+{% endautoescape %}

@@ -1,0 +1,29 @@
+# Alle Eigenschaften sind außerdem unter contacts.<name>.<eigenschaft>
+# (bspw. contacts.Manfred.name) verfügbar.
+
+# Der jeweils aktuelle Kontakt ist in der Variablen contact zugänglich.
+
+# Es können jeweils weitere Eigenscahften hinzugefügt werden (auch
+# komplexe Strukturen)
+contacts:
+- name: Max               # required
+  # Es ist wichtig, dass die Handynummer mit "+" beginnt und in
+  # Anführungszeichen steht
+  phone: "+4912345678901" # required
+  lang: de                # required
+  # weitere Eigenschaften können wie diese hier definiert werden:
+  zitat: Ja, wir schaffen das!
+
+# Alle Eigenschaften sind außerdem unter groups.<name>.<eigenschaft>
+# (bspw. groups.Familie.name) verfügbar.
+
+# Der jeweils aktuelle Kontakt ist in der Variablen group zugänglich.
+
+# Es können jeweils weitere Eigenscahften hinzugefügt werden (auch
+# komplexe Strukturen)
+groups:
+- name: Runde 1 # required
+  members:      # required, mindestens ein Mitglied muss vorhanden sein
+    - Max
+  # weitere Eigenschaften können wie diese hier definiert werden:
+  parole: Können wir das schaffen?

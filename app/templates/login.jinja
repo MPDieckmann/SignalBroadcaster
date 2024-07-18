@@ -1,0 +1,14 @@
+{% extends "base.jinja" %}
+
+{% block main %}
+<form action="/login" method="post">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+  <label for="username">Benutzername:</label>
+  <input id="username" name="username" type="text" placeholder="Max Musterfrau..." />
+  <label for="password">Passwort:</label>
+  <input id="password" name="password" type="password" placeholder="Passwort..." />
+  <div class="button-group">
+    <button class="button-success" type="submit">Login</button>
+  </div>
+</form>
+{% endblock main %}

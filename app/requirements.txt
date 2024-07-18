@@ -1,0 +1,5 @@
+flask
+flask_wtf
+requests
+uwsgi
+PyYAML

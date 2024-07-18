@@ -1,0 +1,28 @@
+services:
+
+  api:
+    image: bbernhard/signal-cli-rest-api:latest
+    volumes:
+      - api:/home/.local/share/signal-cli:rw
+    restart: always
+    environment:
+      - MODE=native
+      - PORT=80
+      - SIGNAL_CLI_CONFIG_DIR=/home/.local/share/signal-cli
+      - SIGNAL_CLI_UID=1000
+      - SIGNAL_CLI_GID=1000
+
+  app:
+    build: app
+    restart: always
+    environment:
+      - APP_SECRET_KEY=${APP_SECRET_KEY:-Signal's Secret Key}
+      - APP_NAME=${APP_NAME:-Signal Manager}
+    volumes:
+      - ./users.yaml:/app/config/users.yaml:ro
+      - ./contacts.yaml:/app/config/contacts.yaml:ro
+    ports:
+      - ${APP_PORT:-80}:8080
+
+volumes:
+  api:

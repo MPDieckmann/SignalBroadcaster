@@ -1,0 +1,23 @@
+{% extends "base.jinja" %}
+
+{% set title %}Hallo {{ session.name }}.{% endset %}
+
+{% block main %}
+<form action="/send" method="post">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+  <p class="sender"><b>Absender:</b> {{ session.name }} <span class="phone">({{ session.phone }})</span></p>
+
+  <label for="message_de">Nachricht (de):</label>
+  <textarea id="message_de" name="message_de" placeholder="Hallo {{ '{{' }} contact.name }}..."></textarea>
+  <label for="message_en">Nachricht (en):</label>
+  <textarea id="message_en" name="message_en" placeholder="Hallo {{ '{{' }} contact.name }}..."></textarea>
+
+  {% if groups %}<section class="groups">{% include "groups.jinja" %}</section>{% endif %}
+  {% if contacts %}<section class="contacts">{% include "contacts.jinja" %}</section>{% endif %}
+
+  <div class="button-group">
+    <button class="button-success" type="submit">Senden</button>
+    <button class="button-error" type="reset">Felder Löschen</button>
+  </div>
+</form>
+{% endblock main %}

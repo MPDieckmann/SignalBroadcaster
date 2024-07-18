@@ -1,0 +1,32 @@
+<table>
+  <caption>Kontakte</caption>
+  <thead>
+    <tr>
+      <th><input id="contacts[]" type="checkbox" /></th>
+      <th><label for="contacts[]">name</label></th>
+      <th>lang</th>
+      <th>phone</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for contact in contacts.values() %}
+    <tr>
+      <td><input id="contact[{{ contact.name }}]" name="contacts[]" value="{{ contact.name }}" type="checkbox" /></td>
+      <th><label for="contact[{{ contact.name }}]">{{ contact.name }}</label></th>
+      <td>{{ contact.lang }}</td>
+      <td>{{ contact.phone }}</td>
+      <td>
+        <details>
+          <summary>mehr</summary>
+          {% for prop in contact.keys() %}
+          {% if prop != "name" and prop != "lang" and prop != "phone" %}
+          <div class="prop"><b>{{ prop }}:</b> {{ contact[prop] }}</div>
+          {% endif %}
+          {% endfor %}
+        </details>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

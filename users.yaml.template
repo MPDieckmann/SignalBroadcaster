@@ -1,0 +1,18 @@
+# Eine Liste mit Bentzern, die sich im Webinterface mit der jeweils
+# angegebenen Nummer anmelden dürfen. Das Passwort ist im Klartext
+# Über sender.<eigenschaft> (bspw. sender.username) oder
+# sender["<eigenschaft>"] (bspw. sender["username"]) kann auf die 
+# Eigenschaften zugegriffen werden.
+
+# Es können keine weiteren Eigenschaften definiert werden.
+
+# Es können mehrere Benutzer mit jeweils eigenem Passwort definiert
+# werden. Man kann auch die gleiche Handynummer mit mehreren
+# Benutzern benutzen, dafür einfach bei "phone: " die gleiche Nummer
+# verwenden.
+users:
+- username: admin
+  name: Max
+  phone: "+4912345678901"
+  lang: de
+  password: Max-Admin-Passwort

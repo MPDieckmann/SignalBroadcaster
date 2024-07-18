@@ -1,0 +1,30 @@
+<table>
+  <caption>Gruppen</caption>
+  <thead>
+    <tr>
+      <th><input id="groups" type="checkbox" /></th>
+      <th><label for="groups">name</label></th>
+      <th>members</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for group in groups.values() %}
+    <tr>
+      <td><input id="group[{{ group.name }}]" name="groups[]" value="{{ group.name }}" type="checkbox" /></td>
+      <th><label for="group[{{ group.name }}]">{{ group.name }}</label></th>
+      <td>{% for member in group.members %}{{ member.name }}{% if not loop.last %}, {% endif %}{% endfor %}</td>
+      <td>
+        <details>
+          <summary>mehr</summary>
+          {% for prop in group.keys() %}
+          {% if prop != "name" and prop != "members" %}
+          <div class="prop"><b>{{ prop }}:</b> {{ group[prop] }}</div>
+          {% endif %}
+          {% endfor %}
+        </details>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
