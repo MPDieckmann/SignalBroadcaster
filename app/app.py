@@ -275,6 +275,19 @@ def help():
     return render_template("help.jinja", title="Help")
 
 
+@app.route("/about")
+@login_required
+@link_required
+def help():
+    """
+    Renders the about page.
+
+    Returns:
+        str: The rendered HTML of the about template.
+    """
+    return render_template("about.jinja", title="About")
+
+
 @app.route("/info")
 def info():
     """
