@@ -29,6 +29,7 @@ Signal Broadcaster is a web application that integrates with Signal to facilitat
 
    Create the following configuration files in the root directory:
 
+   - `.env` (you can use `.env.template` as a template)
    - `users.yaml` (you can use `users.yaml.template` as a template)
    - `contacts.yaml` (you can use `contacts.yaml.template` as a template)
 
