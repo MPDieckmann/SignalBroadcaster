@@ -357,17 +357,14 @@ def send():
             match member.get("lang", None):
                 case "de":
                     messages.append(send_message(sender, message_de, member, group))
-                    break
                 case "en":
                     messages.append(send_message(sender, message_en, member, group))
-                    break
                 case _:
                     messages.append(
                         send_message(
                             sender, message_de + "\n\n" + message_en, member, group
                         )
                     )
-                    break
 
     # Send messages to individual contacts
     for _contact in _contacts:
@@ -377,15 +374,12 @@ def send():
         match contact.get("lang", None):
             case "de":
                 messages.append(send_message(sender, message_de, contact))
-                break
             case "en":
                 messages.append(send_message(sender, message_en, contact))
-                break
             case _:
                 messages.append(
                     send_message(sender, message_de + "\n\n" + message_en, contact)
                 )
-                break
 
     flash(_("Messages sent successfully!"), "info")
     flash(json.dumps(messages), "success")
