@@ -30,7 +30,7 @@ document.querySelectorAll('table input[type="checkbox"]').forEach((checkbox) => 
     const nth = Array.from(column.parentElement.children).indexOf(column) + 1;
     // Find the closest ancestor that is either a thead, tbody, or tfoot
     const closest = checkbox.closest("thead, tbody, tfoot");
-    
+
     if (closest.nodeName.toLowerCase() !== "tbody") {
       // If the checkbox is in the header or footer, update all checkboxes in that column
       closest.parentElement
@@ -46,3 +46,7 @@ document.querySelectorAll('table input[type="checkbox"]').forEach((checkbox) => 
     }
   });
 });
+
+setTimeout(() => {
+  document.querySelector("#messages").innerHTML = "";
+}, 5100);

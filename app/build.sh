@@ -1,0 +1,1 @@
+docker build . -t signalbroadcaster:2024.10.27 -t signalbroadcaster:latest
