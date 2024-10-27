@@ -1,6 +1,6 @@
-flask
-flask_wtf
+Flask[async]
+Flask-WTF
 flask-babel
 requests
-uwsgi
+uWSGI
 PyYAML

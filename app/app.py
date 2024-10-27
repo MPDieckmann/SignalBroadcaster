@@ -211,11 +211,11 @@ def login_required(f):
     """
 
     @wraps(f)
-    def decorated_function(*args, **kwargs):
+    async def decorated_function(*args, **kwargs):
         if "logged_in" not in session:
             flash(_("Please log in first."), "error")
             return redirect(url_for("login"))
-        return f(*args, **kwargs)
+        return await f(*args, **kwargs)
 
     return decorated_function
 
@@ -232,22 +232,22 @@ def link_required(f):
     """
 
     @wraps(f)
-    def decorated_function(*args, **kwargs):
+    async def decorated_function(*args, **kwargs):
         if "device_linked" not in session:
             if session["phone"] in get_accounts():
                 session["device_linked"] = True
-                return f(*args, **kwargs)
+                return await f(*args, **kwargs)
             flash(_("Please link your device first."), "error")
             return redirect(url_for("link"))
-        return f(*args, **kwargs)
+        return await f(*args, **kwargs)
 
     return decorated_function
 
 
-@app.route("/")
+@app.route("/", endpoint="index")
 @login_required
 @link_required
-def index():
+async def index():
     """
     Renders the homepage.
 
@@ -259,8 +259,8 @@ def index():
     )
 
 
-@app.route("/healthcheck")
-def healthcheck():
+@app.route("/healthcheck", endpoint="healthcheck")
+async def healthcheck():
     """
     Health check endpoint to verify the server is running.
 
@@ -270,8 +270,8 @@ def healthcheck():
     return "", 204
 
 
-@app.route("/switch_lang")
-def switch_lang():
+@app.route("/switch_lang", endpoint="switch_lang")
+async def switch_lang():
     """
     Switches the language for the session based on the form input.
 
@@ -286,10 +286,10 @@ def switch_lang():
     return redirect(request.referrer or url_for("index"))
 
 
-@app.route("/help")
+@app.route("/help", endpoint="help")
 @login_required
 @link_required
-def help():
+async def help():
     """
     Renders the help page.
 
@@ -299,8 +299,8 @@ def help():
     return render_template("help.jinja", title=_("Help"))
 
 
-@app.route("/about")
-def about():
+@app.route("/about", endpoint="about")
+async def about():
     """
     Renders the about page.
 
@@ -310,8 +310,8 @@ def about():
     return render_template("about.jinja", title=_("About the Project"))
 
 
-@app.route("/info")
-def info():
+@app.route("/info", endpoint="info")
+async def info():
     """
     Provides application information.
 
@@ -324,10 +324,10 @@ def info():
     }
 
 
-@app.route("/send", methods=["POST"])
+@app.route("/send", methods=["POST"], endpoint="send")
 @login_required
 @link_required
-def send():
+async def send():
     """
     Handles sending messages to contacts and groups.
 
@@ -433,8 +433,8 @@ def send_message(
         return False, response.status_code if response else 500, str(e)
 
 
-@app.route("/login", methods=["GET", "POST"])
-def login():
+@app.route("/login", methods=["GET", "POST"], endpoint="login")
+async def login():
     """
     Handles user login.
 
@@ -463,9 +463,9 @@ def login():
     return render_template("login.jinja", title=_("Login"))
 
 
-@app.route("/link", methods=["GET"])
+@app.route("/link", methods=["GET"], endpoint="link")
 @login_required
-def link():
+async def link():
     """
     Renders the device linking page.
 
@@ -478,10 +478,10 @@ def link():
     return render_template("link.jinja", title=_("Link Device"))
 
 
-@app.route("/unlink", methods=["GET", "POST"])
+@app.route("/unlink", methods=["GET", "POST"], endpoint="unlink")
 @login_required
 @link_required
-def unlink():
+async def unlink():
     """
     Handles device unlinking.
 
@@ -506,9 +506,9 @@ def unlink():
     return render_template("unlink.jinja", title=_("Unlink Device"))
 
 
-@app.route("/link/qrcode.png")
+@app.route("/link/qrcode.png", endpoint="link_qrcode_png")
 @login_required
-def qrcode_png():
+async def link_qrcode_png():
     """
     Retrieves the QR code for linking the device.
 
@@ -530,8 +530,8 @@ def qrcode_png():
         return redirect(url_for("link"))
 
 
-@app.route("/logout")
-def logout():
+@app.route("/logout", endpoint="logout")
+async def logout():
     """
     Logs out the current user by clearing the session.
 
@@ -543,8 +543,8 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/static/<path:path>")
-def send_static(path):
+@app.route("/static/<path:path>", endpoint="send_static")
+async def send_static(path):
     """
     Serves static files from the static directory.
 

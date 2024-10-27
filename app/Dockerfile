@@ -16,7 +16,7 @@
 # along with Signal Broadcaster. If not, see
 # <https://www.gnu.org/licenses/>.
 
-FROM python:3
+FROM python:3.12
 
 RUN update-ca-certificates
 
@@ -36,8 +36,9 @@ COPY --chown=1000:1000 templates /app/templates
 
 RUN pybabel compile -d translations
 
-ENV APP_SECRET_KEY="Signal's Secret Key"
-ENV APP_NAME = "Signal Broadcaster"
+ENV APP_SECRET_KEY "Signal's Secret Key"
+ENV APP_NAME "Signal Broadcaster"
+ENV APP_VERSION 2024.10.27
 
 EXPOSE 8080
 
