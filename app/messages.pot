@@ -1,14 +1,15 @@
-# Translations template for PROJECT.
-# Copyright (C) 2024 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
+# Translations template for SignalBroadcaster.
+# Copyright (C) 2024 MPDieckmann
+# This file is distributed under the same license as the SignalBroadcaster
+# project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
+"Project-Id-Version: SignalBroadcaster 2024.10.27\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-07-19 00:38+0200\n"
+"POT-Creation-Date: 2024-10-27 16:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,60 +18,61 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: app.py:216
-msgid "Please log in first."
-msgstr ""
-
-#: app.py:240
-msgid "Please link your device first."
-msgstr ""
-
-#: app.py:256 templates/base.jinja:27
-msgid "Home"
-msgstr ""
-
-#: app.py:296 templates/base.jinja:29
-msgid "Help"
-msgstr ""
-
-#: app.py:307 templates/base.jinja:30
-msgid "About the Project"
-msgstr ""
-
-#: app.py:387
-msgid "Messages sent successfully!"
-msgstr ""
-
-#: app.py:459
-msgid "Successfully logged in!"
-msgstr ""
-
-#: app.py:465
-msgid "Incorrect username or password!"
-msgstr ""
-
-#: app.py:466 templates/base.jinja:20 templates/login.jinja:11
-msgid "Login"
-msgstr ""
-
-#: app.py:481
-msgid "Link Device"
-msgstr ""
-
-#: app.py:504
+#: functions.py:117
 msgid "Device successfully unlinked."
 msgstr ""
 
-#: app.py:509 templates/base.jinja:28 templates/unlink.jinja:9
+#: functions.py:134
+msgid "Successfully logged in!"
+msgstr ""
+
+#: functions.py:136
+msgid "Incorrect username or password!"
+msgstr ""
+
+#: functions.py:142
+msgid "Successfully logged out!"
+msgstr ""
+
+#: functions.py:193
+msgid "Messages sent successfully!"
+msgstr ""
+
+#: functions.py:263
+msgid "Please link your device first."
+msgstr ""
+
+#: functions.py:284
+msgid "Please log in first."
+msgstr ""
+
+#: protected_routes.py:55
+#, python-format
+msgid "Hello %(name)s"
+msgstr ""
+
+#: protected_routes.py:71 templates/base.jinja:29
+msgid "Help"
+msgstr ""
+
+#: protected_routes.py:102
+msgid "Link Device"
+msgstr ""
+
+#: protected_routes.py:124 templates/base.jinja:28 templates/unlink.jinja:9
 msgid "Unlink Device"
 msgstr ""
 
-#: app.py:532
+#: protected_routes.py:148
 msgid "QR Code could not be generated!"
 msgstr ""
 
-#: app.py:545
-msgid "Successfully logged out!"
+#: public_routes.py:57 templates/base.jinja:30
+msgid "About the Project"
+msgstr ""
+
+#: public_routes.py:93 templates/base.jinja:20 templates/login.jinja:11
+msgid "Login"
 msgstr ""
 
 #: templates/about.jinja:4
@@ -89,6 +91,10 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
+#: templates/base.jinja:27
+msgid "Home"
+msgstr ""
+
 #: templates/contacts.jinja:2
 msgid "Contacts"
 msgstr ""
@@ -105,38 +111,50 @@ msgstr ""
 msgid "How can messages be personalized?"
 msgstr ""
 
-#: templates/help.jinja:22
+#: templates/help.jinja:5
+msgid "The messages are rendered using the template engine Jinja 2."
+msgstr ""
+
+#: templates/help.jinja:7
+msgid "The following example configuration will be used for contacts.yaml:"
+msgstr ""
+
+#: templates/help.jinja:27
 msgid "All entries from this file can be easily used:"
 msgstr ""
 
-#: templates/help.jinja:34
+#: templates/help.jinja:31 templates/help.jinja:60
+msgid "Input:"
+msgstr ""
+
+#: templates/help.jinja:32 templates/help.jinja:61
+msgid "Output:"
+msgstr ""
+
+#: templates/help.jinja:55
 msgid ""
 "These entries were all saved under the contact. When a message is sent to"
-" a group, group variables become accessible as well:"
+" a group, group variables become\n"
+"  accessible as well:"
 msgstr ""
 
-#: templates/index.jinja:5
-#, python-format
-msgid "Hello %(name)s"
-msgstr ""
-
-#: templates/index.jinja:13
+#: templates/index.jinja:6
 msgid "Sender:"
 msgstr ""
 
-#: templates/index.jinja:15
+#: templates/index.jinja:8
 msgid "Message (de):"
 msgstr ""
 
-#: templates/index.jinja:17
+#: templates/index.jinja:10
 msgid "Message (en):"
 msgstr ""
 
-#: templates/index.jinja:24
+#: templates/index.jinja:17
 msgid "Send"
 msgstr ""
 
-#: templates/index.jinja:25
+#: templates/index.jinja:18
 msgid "Reset Fields"
 msgstr ""
 

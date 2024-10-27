@@ -29,10 +29,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 USER 1000:1000
 
-COPY --chown=1000:1000 app.py /app/
-COPY --chown=1000:1000 translations /app/translations
+COPY --chown=1000:1000 *.py /app/
 COPY --chown=1000:1000 static /app/static
 COPY --chown=1000:1000 templates /app/templates
+COPY --chown=1000:1000 translations /app/translations
 
 RUN pybabel compile -d translations
 

@@ -1,7 +1,7 @@
 {% extends "base.jinja" %}
 
 {% block main %}
-<img id="qrcode" src="/link/qrcode.png" title="{{ _("Scan QR Code") }}" alt="{{ _("Scan QR Code") }}" />
+<img id="qrcode" src="{{ url_for('link_qrcode_png') }}" title="{{ _('Scan QR Code') }}" alt="{{ _('Scan QR Code') }}" />
 <p>{{ _("Please scan the QR code with your Signal app to connect your device.") }}</p>
-<p>{{ _("Afterward, please refresh the page or click on Continue:") }} <a class="button" href="/">{{ _("Continue") }}</a></p>
+<p>{{ _("Afterward, please refresh the page or click on Continue:") }} <a class="button" href="{{ url_for('index') }}">{{ _("Continue") }}</a></p>
 {% endblock main %}

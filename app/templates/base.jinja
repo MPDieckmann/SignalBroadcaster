@@ -4,7 +4,7 @@
 
 <head>
   <title>{{ title }} | {{ app.APP_NAME }}</title>
-  <link href="/static/style.css" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 </head>
 
@@ -13,21 +13,21 @@
     <a href="#aside-primary" class="menu-button button hide-on-desktop">&#x2630;</a>
     {% block header %}
     <h1>{{ title }}</h1>
-    {% with locale="de" %}{% if session.lang == "de" %}{% set locale = "en" %}{% endif %}
-    <a class="button" href="/switch_lang?lang={{ locale }}">{{ locale }}</a>
+    {% with locale="de" %}{% if session.lang_code == "de" %}{% set locale = "en" %}{% endif %}
+    <a class="button" href="{{ url_for(request.endpoint, lang=locale) }}">{{ locale }}</a>
     {% endwith %}
-    {% if session.logged_in %}<a class="button" href="/logout">{{ _("Logout") }}</a>{% else %}<a class="button"
-      href="/login">{{ _("Login") }}</a>{% endif %}
+    {% if session.logged_in %}<a class="button" href="{{ url_for('logout') }}">{{ _("Logout") }}</a>{% else %}<a class="button"
+      href="{{ url_for('login') }}">{{ _("Login") }}</a>{% endif %}
     {% endblock header %}
   </header>
   <main id="main">{% block main %}{% endblock main %}</main>
   <aside id="aside-primary">
     <a href="#main" class="menu-button button hide-on-desktop">&times;</a>
     <ul>
-      <li><a href="/">{{ _("Home") }}</a></li>
-      {% if session.device_linked %}<li><a href="/unlink">{{ _("Unlink Device") }}</a></li>{% endif %}
-      <li><a href="/help">{{ _("Help") }}</a></li>
-      <li><a href="/about">{{ _("About the Project") }}</a></li>
+      <li><a href="{{ url_for('index') }}">{{ _("Home") }}</a></li>
+      {% if session.device_linked %}<li><a href="{{ url_for('unlink') }}">{{ _("Unlink Device") }}</a></li>{% endif %}
+      <li><a href="{{ url_for('help') }}">{{ _("Help") }}</a></li>
+      <li><a href="{{ url_for('about') }}">{{ _("About the Project") }}</a></li>
     </ul>
   </aside>
   <footer id="footer">&copy; {{ now.year }} {{ app.developers | join(", ") }}.</footer>
@@ -36,7 +36,7 @@
     <div class="message message-{{ category }}">{{ message }}</div>
     {% endfor %}
   </div>
-  <script src="/static/script.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 
 </html>

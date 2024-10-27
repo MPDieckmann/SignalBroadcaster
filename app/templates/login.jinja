@@ -1,7 +1,7 @@
 {% extends "base.jinja" %}
 
 {% block main %}
-<form action="/login" method="post">
+<form action="{{ url_for('login') }}" method="post">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
   <label for="username">{{ _("Username:") }}</label>
   <input id="username" name="username" type="text" placeholder="Max..." />

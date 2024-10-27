@@ -2,46 +2,79 @@
 
 {% block main %}
 <p><b>{{ _("How can messages be personalized?") }}</b></p>
-<p>The messages are rendered using the template engine Jinja 2.
-  (<a href="https://jinja.palletsprojects.com/en/3.1.x/templates/">Jinja 2</a>)</p>
-<p>The following example configuration will be used for contacts.yaml:</p>
+<p>{{ _("The messages are rendered using the template engine Jinja 2.") }} (<a
+    href="https://jinja.palletsprojects.com/en/3.1.x/templates/">Jinja 2</a>)</p>
+<p>{{ _("The following example configuration will be used for contacts.yaml:") }}</p>
 <pre>
 <b>contacts:</b>
 <b>- name:</b> Max
   <b>phone:</b> "+4912345678901"
   <b>lang:</b> de
   <b>zitat:</b> Ich mag meine Templates roh.
+<b>- name:</b> Max
+  <b>phone:</b> "+4901234567890"
+  <b>lang:</b> de
+  <b>zitat:</b> Ich mag keine Templates.
 
 <b>groups:</b>
 <b>- name:</b> Familie
   <b>members:</b>
   <b>-</b> Max
+  <b>-</b> Moritz
   <b>zitat:</b> Wir haben keine Zitate.
 </pre>
 
 <p>{{ _("All entries from this file can be easily used:") }}</p>
-<ul>
-  <li><code>Hallo <b>{{ "{{" }} contact.name {{ "}}" }}</b>!</code> wird zu <code>Hallo Max!</code></li>
-  <li><code>Deine Handynummer ist: <b>{{ "{{" }} contact.phone {{ "}}" }}</b>.</code> wird zu
-    <code>Deine Handynummer ist: +4912345678901.</code>
-  </li>
-  <li><code>Du sprichst gerne <b>{{ "{{" }} contact.lang {{ "}}" }}</b>!</code> wird zu
-    <code>Du sprichst gerne de!</code>
-  </li>
-  <li><code><b>{{ "{{" }} contact.zitat {{ "}}" }}</b></code> wird zu <code>Ich mag meine Templates roh.</code></li>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>{{ _("Input:") }}</th>
+      <th>{{ _("Output:") }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Hallo <b>{{ "{{" }} contact.name {{ "}}" }}</b>!</td>
+      <td>Hallo <b>Max</b>!</td>
+    </tr>
+    <tr>
+      <td>Deine Handynummer ist: <b>{{ "{{" }} contact.phone {{ "}}" }}</b>.</td>
+      <td>Deine Handynummer ist: <b>+4912345678901</b>.</td>
+    </tr>
+    <tr>
+      <td>Dein Sprachk&uuml;rzel ist: <b>{{ "{{" }} contact.lang {{ "}}" }}</b>!</td>
+      <td>Dein Sprachk&uuml;rzel ist: <b>de</b>!</td>
+    </tr>
+    <tr>
+      <td><b>{{ "{{" }} contact.zitat {{ "}}" }}</b></td>
+      <td><b>Ich mag meine Templates roh.</b></td>
+    </tr>
+  </tbody>
+</table>
 
-<p>{{ _("These entries were all saved under the contact. When a message is sent to a group, group variables become accessible as well:") }}</p>
-<ul>
-  <li><code>Du bist in der Gruppe <b>{{ "{{" }} group.name {{ "}}" }}</b>!</code> wird zu
-    <code>Du bist in der Gruppe Familie!</code>
-  </li>
-  <li>
-    <code>Diese Mitglieder sind in der Gruppe: <b>{{ "{%" }} for member in group.members {{ "%}" }}{{ "{{" }} member.name {{ "}}" }}, {{ "{%" }} endfor {{ "%}" }}</b></code>
-    wird zu <code>Diese Mitglieder sind in der Gruppe: Max, </code>
-  </li>
-  <li><code>Das Gruppenzitat lautet: <b>{{ "{{" }} group.zitat {{ "}}" }}</b>.</code> wird zu
-    <code>Das Gruppenzitat lautet: Wir haben keine Zitate..</code>
-  </li>
-</ul>
+<p>{{ _("These entries were all saved under the contact. When a message is sent to a group, group variables become
+  accessible as well:") }}</p>
+<table>
+  <thead>
+    <tr>
+      <th>{{ _("Input:") }}</th>
+      <th>{{ _("Output:") }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Du bist in der Gruppe <b>{{ "{{" }} group.name {{ "}}" }}</b>!</td>
+      <td>Du bist in der Gruppe <b>Familie</b>!</td>
+    </tr>
+    <tr>
+      <td>Diese Mitglieder sind in der Gruppe: <b>{{ "{%" }} for member in group.members {{ "%}" }}{{ "{{" }}
+          member.name {{ "}}" }}, {{ "{%" }} endfor {{ "%}" }}</b></td>
+      <td>Diese Mitglieder sind in der Gruppe: <b>Max, Moritz, </b></td>
+    </tr>
+    <tr>
+      <td>Das Gruppenzitat lautet: <b>{{ "{{" }} group.zitat {{ "}}" }}</b>.</td>
+      <td>Das Gruppenzitat lautet: <b>Wir haben keine Zitate.</b>.</td>
+    </tr>
+  </tbody>
+</table>
 {% endblock main %}

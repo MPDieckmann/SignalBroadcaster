@@ -1,7 +1,7 @@
 {% extends "base.jinja" %}
 
 {% block main %}
-<form action="/unlink" method="post">
+<form action="{{ url_for('unlink') }}" method="post">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
   <p>{{ _("If you unlink your device, you will no longer be able to send messages via this application.") }}</p>
   <p>{{ _("You can still send and receive messages via your Signal app.") }}</p>

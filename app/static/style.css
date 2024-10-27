@@ -222,8 +222,8 @@ table td {
   text-align: start;
 }
 
-table th:first-child,
-table td:first-child {
+table.selectable th:first-child,
+table.selectable td:first-child {
   width: 0;
 }
 

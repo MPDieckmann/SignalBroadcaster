@@ -1,7 +1,7 @@
 {% extends "base.jinja" %}
 
 {% block main %}
-<form action="/send" method="post">
+<form action="{{ url_for('send') }}" method="post">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
   <p class="sender"><b>{{ _("Sender:") }}</b> {{ session.name }} <span class="phone">({{ session.phone }})</span></p>
 
