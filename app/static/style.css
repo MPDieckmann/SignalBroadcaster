@@ -153,6 +153,36 @@ textarea:focus {
 input[type="checkbox"] {
   cursor: pointer;
   display: block;
+  appearance: none;
+  background: #fff;
+  border: 1px solid #888;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+}
+
+input[type="checkbox"]:focus,
+input[type="checkbox"]:hover {
+  border-color: #000;
+  outline: 1px solid #000;
+  outline-offset: 0;
+}
+
+input[type="checkbox"]::before {
+  content: "\2714";
+  color: #fff0;
+  background: none;
+  border-top: none;
+  border-right: none;
+  display: inline-block;
+}
+
+input[type="checkbox"]:hover::before {
+  color: #888;
+}
+
+input[type="checkbox"]:checked::before {
+  color: #000;
 }
 
 table {
